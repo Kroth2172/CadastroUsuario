@@ -1,0 +1,35 @@
+html,
+body {
+  height: 100%;
+  background: whitesmoke;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.container {
+  display: grid;
+  margin: auto;
+  gap: 24px;
+  width: 600px;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-top: 15px;
+}
+
+.mat-div-buttons {
+   margin-top: 30px;
+}
+
+/* Tabela */
+table {
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}

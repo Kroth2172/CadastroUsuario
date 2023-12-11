@@ -1,0 +1,50 @@
+<mat-toolbar color="primary">
+  <span>{{ title }}</span>
+</mat-toolbar>
+
+<div class="container">
+  <form [formGroup]="formUsuario" (ngSubmit)="salvar()">
+    <div>
+      <!-- NOME -->
+      <mat-form-field hintLabel="Informe 3 a 50 caracteres.">
+        <mat-label>Nome</mat-label>
+        <input #inputNome matInput #input maxlength="50" formControlName="nome" placeholder="Digite o nome">
+        <mat-hint align="end">{{input.value.length}}/50</mat-hint>
+        <mat-error *ngIf="formNome.hasError('minlength')"> Informe no mínimo 3 caracteres</mat-error>
+      </mat-form-field>
+
+      <!-- E-Mail -->
+      <mat-form-field>
+        <mat-label>E-mail</mat-label>
+        <input matInput formControlName="email" placeholder="Digite um E-mail:" />
+        <mat-error *ngIf="formEmail.hasError"> Informe um E-mail válido para cadastrar. </mat-error>
+      </mat-form-field>
+
+      <!-- SENHA -->
+      <mat-form-field hintLabel="Informe 6 a 20 caracteres.">
+        <mat-label>Senha</mat-label>
+        <input matInput #input maxlength="20" formControlName="senha" type="password" placeholder="Digite a senha">
+        <mat-hint align="end">{{input.value.length}}/50</mat-hint>
+        <mat-error *ngIf="formSenha.hasError('minlength')"> Informe no mínimo 6 caracteres</mat-error>
+      </mat-form-field>
+
+      <!-- CONFIRMAR SENHA  -->
+      <mat-form-field hintLabel="Informe 6 a 20 caracteres.">
+        <mat-label>Confirmar Senha</mat-label>
+        <input matInput #input maxlength="20" formControlName="senhaConfirmar" (change)="validacaoCamposSenha()"
+          type="password" placeholder="Digite a senha">
+        <mat-hint align="end">{{input.value.length}}/50</mat-hint>
+        <mat-error *ngIf="formSenhaConfirmar?.hasError">As senhas não correspondem</mat-error>
+      </mat-form-field>
+
+    </div>
+    <div class="mat-div-buttons">
+      <button mat-flat-button [disabled]="formUsuario.invalid" color="primary" type="submit">
+        Salvar
+      </button>
+      <button mat-flat-button (click)="reiniciarFormulario()" class="ml-2">
+        Limpar
+      </button>
+    </div>
+  </form>
+</div>
